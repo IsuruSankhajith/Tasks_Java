@@ -66,22 +66,25 @@ import java.util.List;
 
 public class Solution  {
     public static List<String> buildArray(int[] target, int n) {
-        List<String> result = new ArrayList<>();
-        int targetIndex = 0;
+        List<String> result = new ArrayList<>(); // Create a list to store the stack operations
+        int targetIndex = 0; // Initialize an index to keep track of the current position in the target array
 
         for (int i = 1; i <= n; i++) {
             if (targetIndex == target.length) {
+                // If we have processed all elements in the target array, exit the loop
                 break;
             }
-            result.add("Push");
+            result.add("Push"); // Add "Push" operation to the result list
+
             if (i == target[targetIndex]) {
+                // If the current integer matches the target, move to the next target element
                 targetIndex++;
             } else {
-                result.add("Pop");
+                result.add("Pop"); // Add "Pop" operation to the result list
             }
         }
 
-        return result;
+        return result; // Return the list of stack operations
     }
 
     public static void main(String[] args) {
@@ -104,3 +107,4 @@ public class Solution  {
     System.out.println(result3);  // Output: ["Push", "Push"]
     }
 }
+
