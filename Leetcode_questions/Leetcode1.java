@@ -1,4 +1,9 @@
-You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+////////////////////////////////////////////////////////////////////
+//1
+////////////////////////////////////////////////////////////////
+/*
+You are given two non-empty linked lists representing two non-negative integers.
+ The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
@@ -19,7 +24,7 @@ Example 3:
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
  
-
+*/
 ----------------
 
 class ListNode {
@@ -37,10 +42,8 @@ class ListNode {
         this.val = val;
         this.next = next;
     }
-}
 
-public class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode p = l1, q = l2, curr = dummy;
         int carry = 0;
@@ -54,6 +57,24 @@ public class Solution {
             curr = curr.next;
             if (p != null) p = p.next;
             if (q != null) q = q.next;
+        }
+
+        return dummy.next;
+    }
+
+    public static ListNode deserialize(String data) {
+        if (data == null || data.isEmpty()) {
+            return null;
+        }
+
+        String[] values = data.split("->");
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        for (String value : values) {
+            int val = Integer.parseInt(value.trim());
+            current.next = new ListNode(val);
+            current = current.next;
         }
 
         return dummy.next;
