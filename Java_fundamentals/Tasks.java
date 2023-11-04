@@ -46,7 +46,7 @@ public class Tasks{
 	}
 }
 
-*/
+
 /////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
@@ -55,10 +55,56 @@ public class Tasks{
 		Scanner x = new Scanner (System.in);
 		System.out.print("Enter number  :");
 		String userinput = x.nextLine();
-		System.out.print("You Entered  ::" + userinput);
+		
+		Scanner y = new Scanner (System.in);
+		System.out.print("Enter number  :");
+		String userinput_2 = y.nextLine();
+		
+		
+		System.out.print("You Entered  :" + userinput + userinput_2);
 		
 	}
 }
+*/
+
+/////////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+public class Tasks{
+	public static void main(String [] args){
+		Scanner x = new Scanner (System.in);
+		System.out.print("Enter number  :");
+		String userinput = x.nextLine();
+		
+		Scanner y = new Scanner (System.in);
+		System.out.print("Enter number  :");
+		String userinput_2 = y.nextLine();
+		
+		z = x+y;
+		
+		System.out.print("You Entered  :" + userinput + userinput_2);
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
