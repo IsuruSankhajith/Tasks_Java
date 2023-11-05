@@ -65,7 +65,7 @@ public class Tasks{
 		
 	}
 }
-*/
+
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -92,6 +92,42 @@ public class Tasks {
         
     }
 }
+*/
+/////////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        System.out.print("Enter number 1: ");
+        String userInput = x.nextLine();
+
+        Scanner y = new Scanner(System.in);
+        System.out.print("Enter number 2: ");
+        String userInput2 = y.nextLine();
+
+        // Parse the user input as integers and add them
+        int num1 = Integer.parseInt(userInput);
+        int num2 = Integer.parseInt(userInput2);
+        int sum = num1 + num2;
+        int mines = num1 - num2;
+        int mltiply = num1 * num2;
+        int devide = num1 / num2;
+
+        System.out.println("You Entered: " + num1 + " and " + num2);
+        System.out.println("Sum: " + sum);
+        
+        System.out.println("mines: " + mines);
+        
+        System.out.println("mltiply: " + mltiply);
+        
+        System.out.println("devide: " + devide);
+        
+        
+    }
+}
+
 
 
 
