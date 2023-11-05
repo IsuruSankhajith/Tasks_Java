@@ -70,21 +70,27 @@ public class Tasks{
 /////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
-public class Tasks{
-	public static void main(String [] args){
-		Scanner x = new Scanner (System.in);
-		System.out.print("Enter number  :");
-		String userinput = x.nextLine();
-		
-		Scanner y = new Scanner (System.in);
-		System.out.print("Enter number  :");
-		String userinput_2 = y.nextLine();
-		
-		z = x+y;
-		
-		System.out.print("You Entered  :" + userinput + userinput_2);
-		
-	}
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        System.out.print("Enter number 1: ");
+        String userInput = x.nextLine();
+
+        Scanner y = new Scanner(System.in);
+        System.out.print("Enter number 2: ");
+        String userInput2 = y.nextLine();
+
+        // Parse the user input as integers and add them
+        int num1 = Integer.parseInt(userInput);
+        int num2 = Integer.parseInt(userInput2);
+        int sum = num1 + num2;
+
+        System.out.println("You Entered: " + num1 + " and " + num2);
+        System.out.println("Sum: " + sum);
+        
+        
+    }
 }
 
 
