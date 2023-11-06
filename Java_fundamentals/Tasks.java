@@ -138,7 +138,7 @@ public class Tasks{
 		}
 	}
 }
-*/
+
 /////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
@@ -156,6 +156,45 @@ public class Tasks{
 		}
 	}
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+public class Tasks {
+ 
+    public static void main(String[] args) {
+        // Display the characters to form the text "Java" in a specific pattern
+        System.out.println("   J    a   v     v  a ");
+        System.out.println("   J   a a   v   v  a a");
+        System.out.println("J  J  aaaaa   V V  aaaaa");
+        System.out.println(" JJ  a     a   V  a     a");
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+public class Tasks {
+ 
+    public static void main(String[] args) {
+        double x,y,z;
+		x = (25.5 * 3.5 - 3.5 * 3.5);
+        y= (40.5 - 4.5);
+        z= x/y;
+        System.out.print("Value :" + z);
+    }
+}
+*/
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 
 
