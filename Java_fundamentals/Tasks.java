@@ -209,6 +209,14 @@ public class Tasks{
 	System.out.print("Enter radies value :");
 	String userinput = x.nextLine();
 	
+	double num1 = Double.parseDouble(userinput);
+
+	double  r, z;
+	
+	r = (num1 * num1) * 22/7;
+	
+	System.out.println("The area of " + num1 + " is: " + r);
+	System.out.println("The parameter of " + num1 + " is: " + r);
 	
 	}
 }
