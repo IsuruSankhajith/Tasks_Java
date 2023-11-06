@@ -184,19 +184,34 @@ public class Tasks {
         System.out.print("Value :" + z);
     }
 }
-*/
+
 /////////////////////////////////////////////////////////////////////////////
 
 
+public class Tasks {
+ 
+    public static void main(String[] args) {
+        double x,y,z;
+		x =  (1 - (1.0/3) + (1.0/5) - (1.0/7) + (1.0/9) - (1.0/11));
+        y= 4.0;
+        z= x*y;
+        System.out.print("Value :" + z);
+    }
+}
 
+*/
+/////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-
+import java.util.Scanner;
+public class Tasks{
+	public static void main (String [] args){
+	Scanner x = new Scanner(System.in);
+	System.out.print("Enter radies value :");
+	String userinput = x.nextLine();
+	
+	
+	}
+}
 
 
 
