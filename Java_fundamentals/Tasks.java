@@ -254,16 +254,65 @@ public class Tasks{
 	
 	}
 }
-*/
+
 /////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner; 
 public class Tasks{
+	public static void main(String [] args){
+	Scanner x = new Scanner(System.in);
+	System.out.print("Enter number :");
+	String userinput = x.nextLine();
+	
+	Scanner y = new Scanner(System.in);
+	System.out.print("Enter number :");
+	String userinput2 = y.nextLine();
+	
+	Scanner z = new Scanner(System.in);
+	System.out.print("Enter number :");
+	String userinput3 = z.nextLine();
+	
+	int num1 = Integer.parseInt(userinput);
+	int num2 = Integer.parseInt(userinput2);
+	int num3 = Integer.parseInt(userinput3);
+	
+	int j, m ,p;
+	
+	j = (num1 + num2 + num3)/3;
+	
+	System.out.println("Average is " + j);
+	
 
+	}
+}
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter number 1: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter number 2: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter number 3: ");
+        int num3 = scanner.nextInt();
+
+        int average = (num1 + num2 + num3) / 3;
+
+        System.out.println("Average is " + average);
+        
+        // Close the scanner to release resources (optional but good practice)
+        scanner.close();
+    }
 }
 
 
-
+*/
+/////////////////////////////////////////////////////////////////////////////
 
 
 
