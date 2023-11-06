@@ -199,8 +199,27 @@ public class Tasks {
     }
 }
 
-*/
+
 /////////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        System.out.print("Enter radius value: ");
+        String userInput = x.nextLine();
+
+        double radius = Double.parseDouble(userInput);
+
+        double area = Math.PI * Math.pow(radius, 2);
+        double perimeter = 2 * Math.PI * radius;
+
+        System.out.println("The area of the circle with radius " + radius + " is: " + area);
+        System.out.println("The perimeter of the circle with radius " + radius + " is: " + perimeter);
+    }
+}
+
 
 import java.util.Scanner;
 public class Tasks{
@@ -210,16 +229,18 @@ public class Tasks{
 	String userinput = x.nextLine();
 	
 	double num1 = Double.parseDouble(userinput);
-
-	double  r, z;
-	
+	double  r, z , Perimeter;
 	r = (num1 * num1) * 22/7;
+	Perimeter = 2 * 22/7 *num1;
 	
 	System.out.println("The area of " + num1 + " is: " + r);
-	System.out.println("The parameter of " + num1 + " is: " + r);
+	System.out.println("The Perimeter  of " + num1 + " is: " + Perimeter);
 	
 	}
 }
+*/
+
+
 
 
 
