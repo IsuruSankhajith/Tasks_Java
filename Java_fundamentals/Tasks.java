@@ -92,8 +92,6 @@ public class Tasks {
         
     }
 }
-*/
-/////////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
 
@@ -127,7 +125,22 @@ public class Tasks {
         
     }
 }
+*/
+/////////////////////////////////////////////////////////////////////////////
 
+
+import java.util.Scanner;
+public class Tasks{
+	public static void main (String [] args){
+	Scanner x = new Scanner(System.in);
+	System.out.print("Enter new number :");
+	String userinput = x.nextLine();
+	
+	for(int i =1; i<=10; i++){
+		System.out.println( "8"+"x" + i + " "+ "=" + i * 8);
+		}
+	}
+}
 
 
 
