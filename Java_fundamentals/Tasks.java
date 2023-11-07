@@ -311,13 +311,69 @@ public class Tasks {
 }
 
 
+
+//14///////////////////////////////////////////////////////////////////////////
+ 
+public class Tasks {
+    public static void main(String[] args) {
+        int numRows = 13;
+        int numCols = 50;
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                if (i % 2 == 0) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print(" *");
+                }
+            }
+            if (i % 2 == 0) {
+                System.out.println("=");
+            } else {
+                System.out.println();
+            }
+        }
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < numCols; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+    }
+}
 */
-/////////////////////////////////////////////////////////////////////////////
+//15///////////////////////////////////////////////////////////////////////////
 
 
+class Tasks {
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        
+        int n = s.length();
+        int[] charIndex = new int[256]; // Assuming ASCII characters
 
+        int maxLength = 0;
+        int left = 0; // Left pointer of the sliding window
 
+        for (int right = 0; right < n; right++) {
+            char currentChar = s.charAt(right);
 
+            // If the character is already in the substring, move the left pointer to the right of its last occurrence
+            if (charIndex[currentChar] > 0) {
+                left = Math.max(left, charIndex[currentChar]);
+            }
+
+            charIndex[currentChar] = right + 1; // Update the last index of the character
+
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+}
 
 
 
