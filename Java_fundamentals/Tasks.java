@@ -392,7 +392,28 @@ public class Tasks {
 */
 //17///////////////////////////////////////////////////////////////////////////
 
-
+import java.util.Scanner;
+public class Tasks{
+	public static void main(String args []){
+	Scanner x = new Scanner(System.in);
+	System.out.print("Enter number :");
+	String userinput = x.nextLine();
+	
+	Scanner y = new Scanner(System.in);
+	System.out.print("Enter number :");
+	String userinput2 = y.nextLine();
+	
+	int num1 = Integer.parseInt(userinput);
+	int num2 = Integer.parseInt(userinput2);
+	
+	int z;
+	
+	z = num1 * num2;
+	
+	System.out.println("Value :" + z);
+	
+	}
+}
 
 
 
