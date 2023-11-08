@@ -414,7 +414,7 @@ public class Tasks{
 	
 	}
 }
-*/
+
 
 import java.util.Scanner;
 
@@ -508,12 +508,51 @@ public class Exercise17 {
  }
 }
 
+*/
 
+//17///////////////////////////////////////////////////////////////////////////
 
+import java.util.Scanner;
 
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Input first binary number: ");
+        String binary1 = scanner.nextLine();
 
+        System.out.print("Input second binary number: ");
+        String binary2 = scanner.nextLine();
 
+        String sum = addBinary(binary1, binary2);
+
+        System.out.println("Sum of two binary numbers: " + sum);
+
+        scanner.close();
+    }
+
+    public static String addBinary(String binary1, String binary2) {
+        StringBuilder result = new StringBuilder();
+        int carry = 0;
+
+        int i = binary1.length() - 1;
+        int j = binary2.length() - 1;
+
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int bit1 = (i >= 0) ? Character.getNumericValue(binary1.charAt(i)) : 0;
+            int bit2 = (j >= 0) ? Character.getNumericValue(binary2.charAt(j)) : 0;
+
+            int sum = bit1 + bit2 + carry;
+            result.insert(0, sum % 2);
+            carry = sum / 2;
+
+            i--;
+            j--;
+        }
+
+        return result.toString();
+    }
+}
 
 
 
