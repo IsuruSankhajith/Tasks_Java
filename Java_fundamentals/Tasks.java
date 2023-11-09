@@ -508,64 +508,96 @@ public class Exercise17 {
  }
 }
 
-*/
+
 
 //17///////////////////////////////////////////////////////////////////////////
+// Importing the Scanner class to take user input
 import java.util.Scanner;
 
+// The main class named Tasks
 public class Tasks {
+    // The main method where the program execution begins
     public static void main(String[] args) {
+        // Creating a Scanner object to read input from the user
         Scanner scanner = new Scanner(System.in);
 
+        // Prompting the user to input the first binary number
         System.out.print("Input the first binary number: ");
+        // Reading the first binary number as a string
         String binary1 = scanner.nextLine();
 
+        // Prompting the user to input the second binary number
         System.out.print("Input the second binary number: ");
+        // Reading the second binary number as a string
         String binary2 = scanner.nextLine();
 
+        // Calling the multiplyBinary method to calculate the product of the binary numbers
         String product = multiplyBinary(binary1, binary2);
 
+        // Displaying the product of the two binary numbers
         System.out.println("Product of two binary numbers: " + product);
 
+        // Closing the Scanner to free up resources
         scanner.close();
     }
 
+    // Method to multiply two binary numbers and return the result as a binary string
     public static String multiplyBinary(String binary1, String binary2) {
+        // Getting the lengths of the binary numbers
         int len1 = binary1.length();
         int len2 = binary2.length();
+
+        // Array to store the result of multiplication
         int[] result = new int[len1 + len2];
 
+        // Loop to perform binary multiplication
         for (int i = len1 - 1; i >= 0; i--) {
+            // Initializing carry for the current bit multiplication
             int carry = 0;
+            // Getting the current bit of binary1
             int bit1 = binary1.charAt(i) - '0';
 
+            // Inner loop to multiply the current bit of binary1 with each bit of binary2
             for (int j = len2 - 1; j >= 0; j--) {
+                // Getting the current bit of binary2
                 int bit2 = binary2.charAt(j) - '0';
+
+                // Calculating the sum of the product, the result bit, and the carry
                 int sum = bit1 * bit2 + result[i + j + 1] + carry;
+
+                // Storing the result bit in the result array
                 result[i + j + 1] = sum % 2;
+                
+                // Updating the carry for the next iteration
                 carry = sum / 2;
             }
 
+            // Adding the remaining carry to the current bit of binary1
             result[i] += carry;
         }
 
+        // Building a StringBuilder to store the binary product
         StringBuilder productBuilder = new StringBuilder();
+        
+        // Adding each bit of the result array to the StringBuilder
         for (int value : result) {
             productBuilder.append(value);
         }
 
-        // Remove leading zeros
+        // Removing leading zeros from the binary product
         while (productBuilder.length() > 1 && productBuilder.charAt(0) == '0') {
             productBuilder.deleteCharAt(0);
         }
 
+        // Returning the binary product as a string
         return productBuilder.toString();
     }
 }
 
 
+////-----------------------------------------------------
 import java.util.Scanner;
-public class Exercise18 {
+public class Tasks {
  public static void main(String[] args) {
   // Declare variables to store two binary numbers and the product
   long binary1, binary2, multiply = 0;
@@ -628,6 +660,28 @@ public class Exercise18 {
  }
 }
  
+*/
+
+//18///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks{
+	public static void main(String args[]){
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
