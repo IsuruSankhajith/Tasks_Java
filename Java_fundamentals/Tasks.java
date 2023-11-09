@@ -511,46 +511,55 @@ public class Exercise17 {
 */
 
 //17///////////////////////////////////////////////////////////////////////////
-
 import java.util.Scanner;
 
-public class Tasks {
+public class BinaryMultiplier {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Input first binary number: ");
+        System.out.print("Input the first binary number: ");
         String binary1 = scanner.nextLine();
 
-        System.out.print("Input second binary number: ");
+        System.out.print("Input the second binary number: ");
         String binary2 = scanner.nextLine();
 
-        String sum = addBinary(binary1, binary2);
+        String product = multiplyBinary(binary1, binary2);
 
-        System.out.println("Sum of two binary numbers: " + sum);
+        System.out.println("Product of two binary numbers: " + product);
 
         scanner.close();
     }
 
-    public static String addBinary(String binary1, String binary2) {
-        StringBuilder result = new StringBuilder();
-        int carry = 0;
+    public static String multiplyBinary(String binary1, String binary2) {
+        int len1 = binary1.length();
+        int len2 = binary2.length();
+        int[] result = new int[len1 + len2];
 
-        int i = binary1.length() - 1;
-        int j = binary2.length() - 1;
+        for (int i = len1 - 1; i >= 0; i--) {
+            int carry = 0;
+            int bit1 = binary1.charAt(i) - '0';
 
-        while (i >= 0 || j >= 0 || carry > 0) {
-            int bit1 = (i >= 0) ? Character.getNumericValue(binary1.charAt(i)) : 0;
-            int bit2 = (j >= 0) ? Character.getNumericValue(binary2.charAt(j)) : 0;
+            for (int j = len2 - 1; j >= 0; j--) {
+                int bit2 = binary2.charAt(j) - '0';
+                int sum = bit1 * bit2 + result[i + j + 1] + carry;
+                result[i + j + 1] = sum % 2;
+                carry = sum / 2;
+            }
 
-            int sum = bit1 + bit2 + carry;
-            result.insert(0, sum % 2);
-            carry = sum / 2;
-
-            i--;
-            j--;
+            result[i] += carry;
         }
 
-        return result.toString();
+        StringBuilder productBuilder = new StringBuilder();
+        for (int value : result) {
+            productBuilder.append(value);
+        }
+
+        // Remove leading zeros
+        while (productBuilder.length() > 1 && productBuilder.charAt(0) == '0') {
+            productBuilder.deleteCharAt(0);
+        }
+
+        return productBuilder.toString();
     }
 }
 
