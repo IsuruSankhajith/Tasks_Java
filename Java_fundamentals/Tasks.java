@@ -666,10 +666,45 @@ public class Tasks {
 
 import java.util.Scanner;
 
-public class Tasks{
-	public static void main(String args[]){
-	
-	}
+// The main class named Tasks
+public class Tasks {
+    // The main method where the program execution begins
+    public static void main(String args[]) {
+        // Variables to store decimal number, quotient, loop counter, and binary digits
+        int dec_num, quot, i = 1, j;
+        int bin_num[] = new int[100];
+
+        // Creating a Scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompting the user to input a decimal number
+        System.out.print("Input a Decimal number : ");
+        
+        // Reading the decimal number from the user
+        dec_num = scanner.nextInt();
+
+        // Storing the decimal number in the quotient variable
+        quot = dec_num;
+
+        // Loop to convert decimal to binary
+        while (quot != 0) {
+            // Storing the remainder (binary digit) in the bin_num array
+            bin_num[i++] = quot % 2;
+            // Updating the quotient for the next iteration
+            quot = quot / 2;
+        }
+
+        // Displaying the binary representation of the decimal number
+        System.out.print("Binary number is :");
+
+        // Loop to print the binary digits in reverse order
+        for (j = i - 1; j > 0; j--) {
+            System.out.print(bin_num[j]);
+        }
+
+        // Adding a new line for better output formatting
+        System.out.print("\n");
+    }
 }
 
 
