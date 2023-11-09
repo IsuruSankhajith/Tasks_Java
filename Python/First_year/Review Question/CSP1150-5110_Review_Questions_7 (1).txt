@@ -1,0 +1,18 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+What happens if you multiply a string in Python, e.g. "'ABC' * 3"?
+Name and present an example of two string methods used to test the content of a string.
+Name and present an example of two string methods used to search the content of a string.
+Name and present an example of two string methods used to manipulate the content of a string.
+Write one line of Python code which turns a string into uppercase and strips whitespace from both ends.
+What are some of the names that dictionaries are known by in other languages?
+How do dictionaries differ from lists?
+What happens if you try to refer to a key that does not exist in a dictionary?
+Name and present an example of two dictionary methods.
+What is a set, and how does it differ from a list and a dictionary?
+What does the union of two sets contain, and what does the intersection of two sets contain?
+Show with examples how curly braces ("{" and "}") can be used to create both dictionaries and sets.
+Why are sets not supported in many languages?
+Explain the relationship between variables and objects in memory in Python.
+What is "list comprehension"?
+Write Python code that uses list comprehension to create an uppercase list of the words in a sentence that contain an "e".

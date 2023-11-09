@@ -1,0 +1,15 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+What are the basic components of a computer and what do they do?  How do they relate to the execution of programs?
+What are machine code and assembly language?
+Describe the two main methods of translating high-level source code into machine code.
+What is a computer's operating system responsible for, and how does it facilitate the execution of programs?
+What is pseudocode, and why is it useful?
+Draw and define the main symbols used in flowcharts.
+Write pseudocode and draw a flowchart for a program which prompts the user to input two numbers, then determines and displays the maximum of the two numbers.
+Which high-level language was the first to be used for scientific applications, and which high-level language was the first to be used for business applications?  Are either of them still in use today?
+Summarise the concepts of writability, readability, reliability and cost with regards to programming languages.
+Briefly describe the key design goals and philosophy of Python.
+Write brief definitions of the following programming terms:  Statement, Variable, Comment, Function.
+Describe the concept of variables.  Be sure to mention the declaration of variables, assigning values to them, and using them in a statement.
+What is concatenation, and what are some of the differences between how it is implemented in different languages?

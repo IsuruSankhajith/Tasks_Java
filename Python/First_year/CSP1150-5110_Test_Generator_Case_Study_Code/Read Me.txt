@@ -1,0 +1,10 @@
+While each semester's class will help to come up with a slightly different way to implement the program, the resulting design and code is overall very similar between semesters.
+
+The only significantly different part is how we handle making sure that subtraction questions don't end up with negative results.  i.e. making sure that the question is printed as "biggerNumber - smallerNumber".
+
+I've included code for all versions of the program in the two main ways that this ends up being implemented:
+The files in the "swap_version" folder simply check if num1 is smaller than num2, and swaps them if so - hence num1 will always contain the larger of the two numbers.
+
+The files in the "list_version" folder puts the numbers into a list, and then sorts the list so that we know that the first number in the list is the smaller one and the second number in the list is the larger one.
+
+Both approaches are valid.

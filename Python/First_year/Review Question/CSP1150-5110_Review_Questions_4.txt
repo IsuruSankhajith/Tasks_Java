@@ -1,0 +1,16 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+What is a "function"?
+Name and describe the purpose of 4 of Python's built-in functions.
+What characteristics should functions have?
+Describe some of the benefits that writing functions can have in a long or complex program.
+Write Python code for a function named "increment" which takes a parameter, adds 1 to it, and returns the result.
+Write/Draw examples of pseudocode and a flowchart that involves a function call.
+What are "local variables" and "global variables"?
+Describe the role that parameters and return statements play in functions.
+Programming languages are made up of built-in functions, standard library modules and external modules.  Describe each of these things.
+Describe what a module typically contains.
+Write Python code that imports the random module and uses the "randint()" function from it.
+Outline the process that often results in the creation of an external module, beginning with a user needing a specific piece of functionality that is not already available.
+What are some of the things you should consider when using an external module?
+

@@ -1,0 +1,15 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+Briefly describe the ways in which files are used in various programs/pieces of software.
+What are the two main types of files that programs can use, and how do they differ?
+List and describe the common modes that can be specified when opening/creating files.
+Write code samples in 3 different languages that open/create a file named "example.txt" in "write" mode.
+Why is it important to close a file once you have finished using it in a program?
+Describe the different ways that you can read data from a file.
+What considerations need to be made when reading and writing numbers from/to files in Python?
+What is an exception, and what is exception handling?
+Describe the difference between an exception and a syntax error.
+What happens if an exception occurs in a program and there is no exception handler to handler it?
+Write code samples to demonstrate an exception handler that terminates a program and an exception handler that continues a program.
+Describe what causes the following Python exceptions:  NameError, TypeError, ValueError.
+What do the "else" and "finally" blocks do in exception handling?

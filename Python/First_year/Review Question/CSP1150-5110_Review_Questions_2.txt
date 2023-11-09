@@ -1,0 +1,14 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+Name the four common data types, describe what they can contain, and give an example of each.
+Define the concept of a weakly typed language and a strongly typed language.
+Describe the difference between static typing and dynamic typing.
+List three values that evaluate to True in Python, and three values that evaluate to False in Python.
+Describe some of the approaches that different languages take regarding the concatenation of strings and numbers.
+Why is it important to always know what data types you are using in a program?
+Describe the concept of if-then, if-then-else and else-if statements.
+What is a boolean expression (give examples)?
+Describe and list relational operators and logical operators.
+Write and annotate a code sample to demonstrate how the syntax of an if-then-else statement differs between Python and a language that uses curly brackets.
+Draw a flowchart illustrating the concept of a switch statement.
+What is a string method, and how are does their usage differ from using a built-in function?

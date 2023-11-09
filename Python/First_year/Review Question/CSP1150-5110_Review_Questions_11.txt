@@ -1,0 +1,13 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+What makes a good programmer?
+Why is it worthwhile to search online for solutions to programming problems?
+Why is it important to read the discussion surrounding a potential solution and not just focus on the code?
+What are some of the things to look out for when assessing a piece of code you've found online?
+What makes a good question, when asking or searching for solutions online?
+What are some of the things that good programming language documentation contains?
+In which situations would you search for a solution, as opposed to referring to documentation?
+What are some of the things to look out for when assessing an online programming tutorial?
+What is Pastebin useful for?
+What is Coding Ground useful for?
+List some important tips and lessons that should be taken into consideration when tackling a programming project.

@@ -1,0 +1,15 @@
+Based on the content of this module, you should be able to respond to the following questions / statements.  If you cannot answer them, study the unit content or do independent research until you can.
+
+Define the concept of a "data structure", and how it differs from that of a "data type".
+What is an array, and what sorts of things can be achieved by using one?
+Describe the differences between lists and tuples in Python.
+Write Python code to create a variable named "nums" that contains a list of the numbers 1, 2, 3 and 4, and then append 5 to the end of the list.
+If you had a string variable named "word" which contained "Paradox", how could you refer to just the three middle letters - "rad"?
+What does the "in" comparison operator do?
+Python offers two basic looping (iteration) statements.  Name and describe them.
+Describe the differences in syntax between a while loop in Python and a while loop in most other languages.
+Draw flowcharts of a while loop and a do-while loop that show how they differ.
+What do the "break" and "continue" statements do?
+Provide an example to demonstrate how a do-while loop can be replicated using a while loop, if statement and break statement.
+Describe the two main styles of for loops.
+Describe what the "range()" function in python does.
