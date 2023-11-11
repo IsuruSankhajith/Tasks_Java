@@ -920,7 +920,7 @@ public class Tasks {
     }
 }
 
-*/
+
 
  import java.util.Scanner;
 
@@ -965,7 +965,24 @@ public class Tasks {
         System.out.print("\n");
     }
 }
+*/
+//31///////////////////////////////////////////////////////////////////////////
 
+public class Tasks {
+    public static void main(String args[]) {
+        System.out.println("\n Java version: " + System.getProperty("java.version"));
+
+        System.out.println("\n Java Runtime Version: " + System.getProperty("java.runtime.version"));
+
+        System.out.println("\n Java Home: " + System.getProperty("java.home"));
+
+        System.out.println("\n Java Vendor: " + System.getProperty("java.vendor"));
+
+        System.out.println("\n Java Vendor URL: " + System.getProperty("java.vendor.url"));
+
+        System.out.println("\n Java Class path: " + System.getProperty("java.class.path"));
+    }
+}
 
 
 
