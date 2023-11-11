@@ -965,7 +965,7 @@ public class Tasks {
         System.out.print("\n");
     }
 }
-*/
+
 //31///////////////////////////////////////////////////////////////////////////
 
 public class Tasks {
@@ -983,6 +983,70 @@ public class Tasks {
         System.out.println("\n Java Class path: " + System.getProperty("java.class.path"));
     }
 }
+
+
+//32///////////////////////////////////////////////////////////////////////////
+
+public class Tasks{
+	public static void main(String [] args){
+		int x = 25;
+		int y = 39;
+		int z;
+		
+		z = (25 != 39);                                                                          
+		System.out.println(z);
+	}
+}
+*/
+//32///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String args[]) {
+        // Create a Scanner to obtain input from the command window
+        Scanner input = new Scanner(System.in);
+        int number1; // First number to compare
+        int number2; // Second number to compare
+
+        // Prompt the user to input the first integer
+        System.out.print("Input first integer: ");
+        number1 = input.nextInt(); // Read the first number from the user
+
+        // Prompt the user to input the second integer
+        System.out.print("Input second integer: ");
+        number2 = input.nextInt(); // Read the second number from the user
+
+        // Compare and display the results
+        if (number1 == number2)
+            System.out.printf("%d == %d\n", number1, number2);
+        if (number1 != number2)
+            System.out.printf("%d != %d\n", number1, number2);
+        if (number1 < number2)
+            System.out.printf("%d < %d\n", number1, number2);
+        if (number1 > number2)
+            System.out.printf("%d > %d\n", number1, number2);
+        if (number1 <= number2)
+            System.out.printf("%d <= %d\n", number1, number2);
+        if (number1 >= number2)
+            System.out.printf("%d >= %d\n", number1, number2);
+    }
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
