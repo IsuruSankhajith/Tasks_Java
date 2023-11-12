@@ -1040,74 +1040,27 @@ import java.util.Scanner;
 public class Tasks {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int number1;
+        
+        System.out.print("Enter Integer: ");
+        
+        long n = input.nextLong();
+        
+        System.out.println("The sum of the digits is: " + sumDigits(n));
+        
+        input.close(); // It's good practice to close the Scanner when you're done with it
+    }
 
-        System.out.print("Enter number: ");
-        number1 = input.nextInt();
-
-        // Perform additional tasks with the entered number if needed
-        // For example, you could print the squared value:
-        int squaredNumber = number1 * number1;
-        System.out.println("Squared number: " + squaredNumber);
+    public static int sumDigits(long n) {
+        int sum = 0;
+        
+        while (n != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        
+        return sum;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
