@@ -1032,7 +1032,7 @@ public class Tasks {
             System.out.printf("%d >= %d\n", number1, number2);
     }
 }
-*/  
+ 
 //32///////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
@@ -1062,7 +1062,40 @@ public class Tasks {
     }
 }
 
+*/ 
 
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input an integer: ");
+
+        int number = input.nextInt();
+        int sum = calculateDigitSum(number);
+
+        System.out.println("The sum of the digits is: " + sum);
+    }
+
+    // Function to calculate the sum of digits
+    private static int calculateDigitSum(int number) {
+        int sum = 0;
+
+        // Iterate through each digit of the number
+        while (number != 0) {
+            // Extract the last digit
+            int digit = number % 10;
+            
+            // Add the digit to the sum
+            sum += digit;
+
+            // Remove the last digit from the number
+            number /= 10;
+        }
+
+        return sum;
+    }
+}
 
 
 
