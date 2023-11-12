@@ -1061,7 +1061,7 @@ public class Tasks {
         return sum;
     }
 }
-*/
+
  
 
 import java.util.Scanner;
@@ -1102,8 +1102,41 @@ class DigitSumCalculator {
         return sum;
     }
 }
+*/
+//32///////////////////////////////////////////////////////////////////////////
 
+import java.util.Scanner;
 
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input the length of a side of the hexagon: ");
+
+        double sideLength = input.nextDouble();
+
+        // Create an instance of Hexagon class
+        Hexagon hexagon = new Hexagon(sideLength);
+
+        // Calculate and display the area of the hexagon
+        double area = hexagon.calculateArea();
+        System.out.println("The area of the hexagon is: " + area);
+    }
+}
+
+class Hexagon {
+    private double sideLength;
+
+    // Constructor to initialize the side length
+    public Hexagon(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    // Function to calculate the area of the hexagon
+    public double calculateArea() {
+        // Using the formula: (6 * s^2)/(4 * tan(π/6))
+        return (6 * Math.pow(sideLength, 2)) / (4 * Math.tan(Math.PI / 6));
+    }
+}
 
 
 
