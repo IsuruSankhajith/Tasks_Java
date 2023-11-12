@@ -660,7 +660,7 @@ public class Tasks {
  }
 }
  
-*/
+
 
 //18///////////////////////////////////////////////////////////////////////////
 
@@ -706,6 +706,406 @@ public class Tasks {
         System.out.print("\n");
     }
 }
+
+//19///////////////////////////////////////////////////////////////////////////
+
+
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Input first binary number: ");
+        String binary1 = scanner.nextLine();
+
+        System.out.print("Input second binary number: ");
+        String binary2 = scanner.nextLine();
+
+        String sum = addBinary(binary1, binary2);
+
+        System.out.println("Sum of two binary numbers: " + sum);
+
+        scanner.close();
+    }
+
+    public static String addBinary(String binary1, String binary2) {
+        StringBuilder result = new StringBuilder();
+        int carry = 0;
+
+        int i = binary1.length() - 1;
+        int j = binary2.length() - 1;
+
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int bit1 = (i >= 0) ? Character.getNumericValue(binary1.charAt(i)) : 0;
+            int bit2 = (j >= 0) ? Character.getNumericValue(binary2.charAt(j)) : 0;
+
+            int sum = bit1 + bit2 + carry;
+            result.insert(0, sum % 2);
+            carry = sum / 2;
+
+            i--;
+            j--;
+        }
+
+        return result.toString();
+    }
+}
+
+//19///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input a decimal number
+        System.out.print("Input a decimal number: ");
+        int decimalNumber = scanner.nextInt();
+
+        // Convert decimal to hexadecimal
+        String hexadecimalNumber = convertToHexadecimal(decimalNumber);
+
+        // Display the result
+        System.out.println("Hexadecimal number is: " + hexadecimalNumber);
+    }
+
+    // Function to convert decimal to hexadecimal
+    private static String convertToHexadecimal(int decimalNumber) {
+        // Using built-in method to convert decimal to hexadecimal
+        String hexadecimal = Integer.toHexString(decimalNumber);
+
+        // Convert the result to uppercase for consistency
+        return hexadecimal.toUpperCase();
+    }
+}
+
+
+//20///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String args[]) {
+        int dec_num, rem;
+        String hexdec_num = "";
+        char hex[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Input decimal number: ");
+        dec_num = in.nextInt();
+
+        while (dec_num > 0) {
+            rem = dec_num % 16;
+            hexdec_num = hex[rem] + hexdec_num;
+            dec_num = dec_num / 16;
+        }
+
+        System.out.print("Hexadecimal number is: " + hexdec_num + "\n");
+    }
+}
+
+//21///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input a decimal number
+        System.out.print("Input a decimal number: ");
+        int decimalNumber = scanner.nextInt();
+
+        // Convert decimal to octal
+        String octalNumber = convertToOctal(decimalNumber);
+
+        // Display the result
+        System.out.println("Octal number is: " + octalNumber);
+    }
+
+    // Function to convert decimal to octal
+    private static String convertToOctal(int decimalNumber) {
+        // Using built-in method to convert decimal to octal
+        String octal = Integer.toOctalString(decimalNumber);
+
+        return octal;
+    }
+}
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String args[]) {
+        // Declare variables to store decimal number, remainder, quotient, and an array for octal digits
+        int dec_num, rem, quot, i = 1, j;
+        int oct_num[] = new int[100];
+        
+        // Create a Scanner object to read input from the user
+        Scanner scan = new Scanner(System.in);
+
+        // Prompt the user to input a decimal number
+        System.out.print("Input a Decimal Number: ");
+        dec_num = scan.nextInt();
+
+        // Initialize the quotient with the decimal number
+        quot = dec_num;
+
+        // Convert the decimal number to octal and store octal digits
+        while (quot != 0) {
+            oct_num[i++] = quot % 8;
+            quot = quot / 8;
+        }
+
+        // Display the octal representation of the decimal number
+        System.out.print("Octal number is: ");
+        for (j = i - 1; j > 0; j--) {
+            System.out.print(oct_num[j]);
+        }
+        
+        System.out.print("\n");
+    }
+}
+
+//22///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Exercise22 {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the user
+        Scanner sc = new Scanner(System.in);
+        
+        // Declare variables to store binary and decimal numbers, remainder, and a multiplier
+        long binaryNumber, decimalNumber = 0, j = 1, remainder;
+        
+        // Prompt the user to input a binary number
+        System.out.print("Input a binary number: ");
+        binaryNumber = sc.nextLong();
+
+        // Convert the binary number to decimal
+        while (binaryNumber != 0) {
+            remainder = binaryNumber % 10;
+            decimalNumber = decimalNumber + remainder * j;
+            j = j * 2;
+            binaryNumber = binaryNumber / 10;
+        }
+        
+        // Display the decimal representation of the binary number
+        System.out.println("Decimal Number: " + decimalNumber);
+    }
+}
+
+
+//23///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Input a Binary Number: ");
+        String binaryInput = scanner.next();
+
+        // Convert binary to decimal first
+        int decimalValue = Integer.parseInt(binaryInput, 2);
+
+        // Convert decimal to hexadecimal
+        String hexadecimalValue = Integer.toHexString(decimalValue);
+
+        System.out.println("Hexadecimal value: " + hexadecimalValue.toUpperCase());
+    }
+}
+
+
+
+ import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        // Declare an array to store hexadecimal digits, variables for calculation, and binary input
+        int[] hex = new int[1000];
+        int i = 1, j = 0, rem, dec = 0, bin;
+
+        // Create a Scanner object to read input from the user
+        Scanner in = new Scanner(System.in);
+
+        // Prompt the user to input a binary number
+        System.out.print("Input a Binary Number: ");
+        bin = in.nextInt();
+
+        // Convert the binary number to decimal
+        while (bin > 0) {
+            rem = bin % 2;
+            dec = dec + rem * i;
+            i = i * 2;
+            bin = bin / 10;
+        }
+        i = 0;
+
+        // Convert the decimal number to hexadecimal
+        while (dec != 0) {
+            hex[i] = dec % 16;
+            dec = dec / 16;
+            i++;
+        }
+
+        // Display the hexadecimal value
+        System.out.print("Hexadecimal value: ");
+        for (j = i - 1; j >= 0; j--) {
+            if (hex[j] > 9) {
+                System.out.print((char)(hex[j] + 55));
+            } else {
+                System.out.print(hex[j]);
+            }
+        }
+        System.out.print("\n");
+    }
+}
+
+//31///////////////////////////////////////////////////////////////////////////
+
+public class Tasks {
+    public static void main(String args[]) {
+        System.out.println("\n Java version: " + System.getProperty("java.version"));
+
+        System.out.println("\n Java Runtime Version: " + System.getProperty("java.runtime.version"));
+
+        System.out.println("\n Java Home: " + System.getProperty("java.home"));
+
+        System.out.println("\n Java Vendor: " + System.getProperty("java.vendor"));
+
+        System.out.println("\n Java Vendor URL: " + System.getProperty("java.vendor.url"));
+
+        System.out.println("\n Java Class path: " + System.getProperty("java.class.path"));
+    }
+}
+
+
+//32///////////////////////////////////////////////////////////////////////////
+
+public class Tasks{
+	public static void main(String [] args){
+		int x = 25;
+		int y = 39;
+		int z;
+		
+		z = (25 != 39);                                                                          
+		System.out.println(z);
+	}
+}
+
+//32///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String args[]) {
+        // Create a Scanner to obtain input from the command window
+        Scanner input = new Scanner(System.in);
+        int number1; // First number to compare
+        int number2; // Second number to compare
+
+        // Prompt the user to input the first integer
+        System.out.print("Input first integer: ");
+        number1 = input.nextInt(); // Read the first number from the user
+
+        // Prompt the user to input the second integer
+        System.out.print("Input second integer: ");
+        number2 = input.nextInt(); // Read the second number from the user
+
+        // Compare and display the results
+        if (number1 == number2)
+            System.out.printf("%d == %d\n", number1, number2);
+        if (number1 != number2)
+            System.out.printf("%d != %d\n", number1, number2);
+        if (number1 < number2)
+            System.out.printf("%d < %d\n", number1, number2);
+        if (number1 > number2)
+            System.out.printf("%d > %d\n", number1, number2);
+        if (number1 <= number2)
+            System.out.printf("%d <= %d\n", number1, number2);
+        if (number1 >= number2)
+            System.out.printf("%d >= %d\n", number1, number2);
+    }
+}
+ 
+//32///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter Integer: ");
+        
+        long n = input.nextLong();
+        
+        System.out.println("The sum of the digits is: " + sumDigits(n));
+        
+        input.close(); // It's good practice to close the Scanner when you're done with it
+    }
+
+    public static int sumDigits(long n) {
+        int sum = 0;
+        
+        while (n != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        
+        return sum;
+    }
+}
+*/
+ 
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input an integer: ");
+
+        int number = input.nextInt();
+
+        // Create an instance of DigitSumCalculator class
+        DigitSumCalculator calculator = new DigitSumCalculator();
+
+        // Calculate and display the sum of digits
+        int sum = calculator.calculateDigitSum(number);
+        System.out.println("The sum of the digits is: " + sum);
+    }
+}
+
+class DigitSumCalculator {
+    // Function to calculate the sum of digits
+    public int calculateDigitSum(int number) {
+        int sum = 0;
+
+        // Iterate through each digit of the number
+        while (number != 0) {
+            // Extract the last digit
+            int digit = number % 10;
+
+            // Add the digit to the sum
+            sum += digit;
+
+            // Remove the last digit from the number
+            number /= 10;
+        }
+
+        return sum;
+    }
+}
+
+
+
+
 
 
 
