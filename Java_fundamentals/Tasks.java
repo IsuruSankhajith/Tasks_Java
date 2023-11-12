@@ -997,7 +997,7 @@ public class Tasks{
 		System.out.println(z);
 	}
 }
-*/
+
 //32///////////////////////////////////////////////////////////////////////////
 
 import java.util.Scanner;
@@ -1032,7 +1032,55 @@ public class Tasks {
             System.out.printf("%d >= %d\n", number1, number2);
     }
 }
-  
+*/  
+//32///////////////////////////////////////////////////////////////////////////
+
+import java.util.Scanner;
+
+public class Tasks {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int number1;
+
+        System.out.print("Enter number: ");
+        number1 = input.nextInt();
+
+        // Perform additional tasks with the entered number if needed
+        // For example, you could print the squared value:
+        int squaredNumber = number1 * number1;
+        System.out.println("Squared number: " + squaredNumber);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
