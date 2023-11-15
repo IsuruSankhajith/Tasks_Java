@@ -1117,7 +1117,7 @@ public class MyFriends {
       }
 }
 
-*/
+
 //32///////////////////////////////////////////////////////////////////////////
 import java.util.Scanner;
 
@@ -1159,29 +1159,82 @@ class Hexagon {
 
 
 //32///////////////////////////////////////////////////////////////////////////
+public class Tasks {
+	
+	private final int DEFAULT_MAX_FRIENDS = 10;	// default size of array
+	
 
+	private Person[] friendList;		// array of persons (list of friends)
+	private int numFriends;				// current number of persons in list
+	
+	
+	public Tasks() {
+		friendList = new Person[DEFAULT_MAX_FRIENDS];
+		numFriends = 0;
+	}
+	
 
+	public Tasks(int max) {
+		friendList = new Person[max];
+		numFriends = 0;
+	}
 
+	
+	public void add(String firstName, String lastName, String email) {
+		// create a new Person object
+		Person friend = new Person(firstName, lastName, email);
+				
+		// add it to the array of friends
+		// if the array is not big enough, double its capacity automatically
+		if (numFriends == friendList.length)
+			expandCapacity();
+		
+		// add a reference to a friend at the first free spot in the array
+		friendList[numFriends] = friend;
+		numFriends++;		
+	}
 
+	
+	public boolean remove(String firstName, String lastName) {
+		final int NOT_FOUND = -1;
+		int search = NOT_FOUND;
+		Person target = new Person(firstName, lastName, "");	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		// if the list is empty, can't remove
+		if (numFriends == 0) {
+			return false;
+		}
+		// search the list for the specified friend
+		for (int i = 0; i < numFriends && search == NOT_FOUND; i++)
+			if (friendList[i].equals(target))
+				search = i;
+		
+		// if not found, can't remove 
+		if (search == NOT_FOUND)
+			return false;
+		
+		// the target person is found, remove by replacing with the last one in the list
+		friendList[search] = friendList[numFriends - 1];
+		friendList[numFriends - 1] = null;
+		numFriends--;
+		
+		return true;			
+	}
+		
+	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		for (int i = 0; i < numFriends; i++) {
+			s.append(friendList[i].toString()).append("\n");
+		}
+		return s.toString();
+	}
+	
+	
+	private void expandCapacity() {
+		Person[] largerList = new Person[friendList.length * 2];
+		System.arraycopy(friendList, 0, largerList, 0, friendList.length);
+		friendList = largerList;
+	}
+}
+*/
