@@ -1237,7 +1237,7 @@ public class Tasks {
 		friendList = largerList;
 	}
 }
-*/
+
 /**
  * Class that represents a person with attributes name, email address 
  
@@ -1374,3 +1374,42 @@ public class Tasks {
 		return s;
 	}
 }
+*/
+
+
+public class Tasks{
+	public class static void main(String args[]){
+		System.out.println("Isuru");
+	}
+}
+
+
+
+public class Tasks{
+	public class static void main(String args[]){
+		System.out.println("Isuru");
+	}
+}
+public class Tasks{
+	public class static void main(String args[]){
+		System.out.println("Isuru");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
