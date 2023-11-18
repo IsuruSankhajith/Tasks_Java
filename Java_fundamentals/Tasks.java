@@ -1,4 +1,4 @@
-/*
+
 public class Example1{
 	public static void main(String args []){
 		System.out.println("Hello World");
@@ -1241,7 +1241,7 @@ public class Tasks {
  
 public class Tasks {
 	
-	/* Attribute declarations 
+	 Attribute declarations 
 	private String lastName;	// last name
 	private String firstName;	// first name
 	private String email;		// email address
@@ -1288,7 +1288,7 @@ public class Tasks {
 
 public class Tasks {
 	
-	/* Attribute declarations 
+	 Attribute declarations 
 	private String lastName;	// last name
 	private String firstName;	// first name
 	private String email;		// email address
@@ -1387,7 +1387,7 @@ catch(FileNotFoundExceptation ex){
 }
 
 ///////////////////////////////////////////////////////////////////////////
-/*
+
 public class Tasks2{
 	public static void main (String args[]){
 		System.out.println("sadfsdf");
@@ -1687,7 +1687,7 @@ public class Tasks2{
 		
 	}
 }
-*/
+
 ///////////////////////////////////////////////////////////////////////////
 public class Tasks2{
 	public static void main(String args []){
@@ -1703,7 +1703,66 @@ public class Tasks2{
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
+public class Tasks2{
+	public static void main (String args[]){
+		System.out.println(10+20);
+		System.out.println("10"+" "+ "20");
+		System.out.println("10"+20);
+		System.out.println(10+"20");
+	}
+}
+ 
+///////////////////////////////////////////////////////////////////////////
 
+public class Tasks2{
+	public static void main (String args[]){
+		System.out.println(40234124);
+		System.out.println("04-03-234");
+		System.out.println(40234124);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+public class Tasks2{
+	public static void main (String args[]){
+		int x=10, y =20;
+		System.out.println(x+y);
+		System.out.println("x"+"y");
+		System.out.println("x+y");
+		System.out.println("x"+y);
+		System.out.println(x + "y");
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+
+public class Tasks2{
+	public static void main (String args[]){
+		int x=10, y =20;
+		System.out.println(10 + 20 + 30);
+		System.out.println("10 + 20 + 30");
+		System.out.println("10 + 20" + 30);
+		System.out.println("10" + "20" + "30");
+		System.out.println("10" + 20 + 30);
+		System.out.println("10" + "20" + 30);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+public class Tasks2{
+	public static void main (String args[]){
+		int x=10, y =20, z = 30;
+		System.out.println(x+ y+ z);
+		System.out.println("x + y" + z);
+		System.out.println("x");
+		System.out.println(+ "30");
+		System.out.println(30);
+		System.out.println(+ 30);
+	}
+}
 
 
 
