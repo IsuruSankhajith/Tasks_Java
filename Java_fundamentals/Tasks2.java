@@ -248,8 +248,6 @@ public class Tasks2{
 	}
 }
 
-*/
-///////////////////////////////////////////////////////////////////////////
 
 public class Tasks2{
 	public static void main(String args []){
@@ -260,8 +258,36 @@ public class Tasks2{
 }
 
 
+public class Tasks2{
+	public static void main(String args []){
+		System.out.println("AB\bCD");
+	}
+}
 
+///////////////////////////////////////////////////////////////////////////
 
+public class Tasks2{
+	public static void main(String args []){
+		System.out.println("AB\tCD");
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+public class Tasks2{
+	public static void main(String args []){
+		System.out.println("AB\nCD");
+	}
+}
+*/
+///////////////////////////////////////////////////////////////////////////
+public class Tasks2{
+	public static void main(String args []){
+		System.out.println("AB\\CD");
+		System.out.println("AB\'CD");
+		System.out.println("AB\"CD");
+		
+	}
+}
 
 
 
