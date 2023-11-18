@@ -168,7 +168,7 @@ public class Tasks2{
 	}
 }
 
-*/
+
 ///////////////////////////////////////////////////////////////////////////
 
 public class Tasks2{
@@ -178,6 +178,109 @@ public class Tasks2{
 		System.out.println(x);
 	}
 }
+
+
+///////////////////////////////////////////////////////////////////////////
+public class Tasks2{
+	public static void main(String args []){
+		int x;
+		x = 100;
+		x =200;
+		System.out.println(x);
+		
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+public class Tasks2{
+	public static void main(String args []){
+		int x;
+		x = 100;
+		
+		System.out.println(x);
+		
+		x =200;
+		System.out.println(x);
+		
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+public class Tasks2{
+	public static void main(String args []){
+		int x;
+		x = 100;
+		
+		System.out.println(x);
+		int y;
+		y =200;
+		System.out.println(y);
+		
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+public class Tasks2{
+	public static void main(String args []){
+		int x = 100;
+		int y  = 100;
+		
+		System.out.println(x);
+		System.out.println(y);
+		
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+public class Tasks2{
+	public static void main(String args []){
+		int x = 100,y,z  = 100;;
+		
+		System.out.println(x);
+		y =300;
+		System.out.println(y);
+		System.out.println(z);
+		
+	}
+}
+
+*/
+///////////////////////////////////////////////////////////////////////////
+
+public class Tasks2{
+	public static void main(String args []){
+		System.out.println('y');
+		System.out.println("A");
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
