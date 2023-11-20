@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Tasks2 {
+class Solution {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
         char[][] board = new char[n][n];
