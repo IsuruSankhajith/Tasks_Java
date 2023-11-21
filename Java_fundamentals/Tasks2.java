@@ -17,13 +17,20 @@ class Tasks2 {
         String z = scanner.nextLine();
         int num3 = Integer.parseInt(z);
         
-        if(num1 < 10){
-			System.out.println("Higest number");
-		}else if(num2 < 50){
-			System.out.println("Hige sdfsdfadas");
-		}else if(num2 > 100){
-			System.out.println("Hige");
-		}
+        if (num1 > num2)
+			if (num1 > num3)
+			
+			System.out.println("Higest Value number is " + num1);
+		if (num2 > num1)
+			if (num2 > num3)
+			
+			System.out.println("Higest Value number is " + num2);
+		
+		if (num3 > num1)
+			if (num3 > num2)
+			
+			System.out.println("Higest Value number is " + num3);
+
     }
 }
 
