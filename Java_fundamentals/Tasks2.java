@@ -20,7 +20,7 @@ class Tasks2 {
         if(num1 < 10){
 			System.out.println("Higest number");
 		}else if(num2 < 50){
-			System.out.println("Hige adas");
+			System.out.println("Hige sdfsdfadas");
 		}else if(num2 > 100){
 			System.out.println("Hige");
 		}
