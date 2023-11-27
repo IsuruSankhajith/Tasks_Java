@@ -31,18 +31,20 @@ class Solution {
         int maxArea = 0;
 
         // Iterate through the array, including an extra iteration to handle remaining bars in the stack
-        for (int i = 0; i <= heights.length; i++) {
+        for (int currentIdx = 0; currentIdx <= heights.length; currentIdx++) {
             // While the stack is not empty and the current bar is shorter than the bar at the top of the stack
-            while (!stack.isEmpty() && (i == heights.length || heights[i] < heights[stack.peek()])) {
+            while (!stack.isEmpty() && (currentIdx == heights.length || heights[currentIdx] < heights[stack.peek()])) {
                 // Pop the top bar from the stack
-                int height = heights[stack.pop()];
+                int poppedIndex = stack.pop();
+                // Calculate the height of the rectangle
+                int height = heights[poppedIndex];
                 // Calculate the width of the rectangle using the difference in indices
-                int width = stack.isEmpty() ? i : i - stack.peek() - 1;
+                int width = stack.isEmpty() ? currentIdx : currentIdx - stack.peek() - 1;
                 // Update the maximum area
                 maxArea = Math.max(maxArea, height * width);
             }
             // Push the current index onto the stack
-            stack.push(i);
+            stack.push(currentIdx);
         }
 
         // Return the maximum area found
