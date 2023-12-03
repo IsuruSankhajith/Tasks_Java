@@ -1,37 +1,19 @@
+public class Tasks2 {
+    public static void main(String[] args) {
+        // Declare and initialize an array of integers
+        int[] numbers = {1, 2, 3, 4, 5};
 
-import java.util.Scanner;
+        // Access elements of the array and print them
+        System.out.println("Elements of the array:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println("Element at index " + i + ": " + numbers[i]);
+        }
 
-class Tasks2 {
-    public static void main(String args[]) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.print("Enter first number: ");
-        String x = scanner.nextLine();
-        int num1 = Integer.parseInt(x);
-        
-        System.out.print("Enter second number: ");
-        String y = scanner.nextLine();
-        int num2 = Integer.parseInt(y);
-        
-        System.out.print("Enter third number: ");
-        String z = scanner.nextLine();
-        int num3 = Integer.parseInt(z);
-        
-        if (num1 > num2)
-			if (num1 > num3)
-			
-			System.out.println("Higest Value number is " + num1);
-		if (num2 > num1)
-			if (num2 > num3)
-			
-			System.out.println("Higest Value number is " + num2);
-		
-		if (num3 > num1)
-			if (num3 > num2)
-			
-			System.out.println("Higest Value number is " + num3);
-
+        // Calculate the sum of elements in the array
+        int sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        System.out.println("Sum of elements: " + sum);
     }
 }
-
-
