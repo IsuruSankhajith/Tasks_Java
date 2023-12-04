@@ -41,9 +41,11 @@ class Solution {
         int rows = matrix.length;
         int cols = matrix[0].length;
 
+        // Array to store the height of each bar in the histogram
         int[] heights = new int[cols];
         int maxArea = 0;
 
+        // Iterate through each row of the matrix
         for (int i = 0; i < rows; i++) {
             // Update heights based on the current row
             for (int j = 0; j < cols; j++) {
@@ -61,19 +63,26 @@ class Solution {
         return maxArea;
     }
 
+    // Helper function to calculate the maximum area of a rectangle for a given histogram
     private int calculateMaxRectangleArea(int[] heights) {
         int maxArea = 0;
         Stack<Integer> stack = new Stack<>();
 
+        // Iterate through each bar in the histogram
         for (int i = 0; i <= heights.length; i++) {
+            // Set the currentHeight to 0 if we are at the end of the histogram
             int currentHeight = (i == heights.length) ? 0 : heights[i];
 
+            // Update the stack to maintain a non-decreasing order of histogram heights
             while (!stack.isEmpty() && currentHeight < heights[stack.peek()]) {
                 int h = heights[stack.pop()];
+                // Calculate the width of the rectangle using the popped bar's index
                 int w = stack.isEmpty() ? i : i - stack.peek() - 1;
+                // Update the maximum area
                 maxArea = Math.max(maxArea, h * w);
             }
 
+            // Push the current bar's index onto the stack
             stack.push(i);
         }
 
