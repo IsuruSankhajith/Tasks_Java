@@ -33,28 +33,50 @@ cols == matrix[i].length
 matrix[i][j] is '0' or '1'.
 */
 class Solution {
-    public int numDistinct(String s, String t) {
-        int m = s.length();
-        int n = t.length();
-
-        // dp[i][j] represents the number of distinct subsequences of s[0...i-1] that equals t[0...j-1]
-        int[][] dp = new int[m + 1][n + 1];
-
-        // Empty string t is a subsequence of any string s, so initialize the first column to 1
-        for (int i = 0; i <= m; i++) {
-            dp[i][0] = 1;
+    public int maximalRectangle(char[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return 0;
         }
 
-        // Fill in the dp array
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                // If the current characters in s and t are equal, we have two options:
-                // 1. Include the current character in both s and t, so dp[i][j] = dp[i-1][j-1]
-                // 2. Exclude the current character in s, so dp[i][j] = dp[i-1][j]
-                dp[i][j] = dp[i - 1][j] + (s.charAt(i - 1) == t.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        int[] heights = new int[cols];
+        int maxArea = 0;
+
+        for (int i = 0; i < rows; i++) {
+            // Update heights based on the current row
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] == '1') {
+                    heights[j] += 1;
+                } else {
+                    heights[j] = 0;
+                }
             }
+
+            // Calculate the maximum area of a rectangle for the current row
+            maxArea = Math.max(maxArea, calculateMaxRectangleArea(heights));
         }
 
-        return dp[m][n];
+        return maxArea;
+    }
+
+    private int calculateMaxRectangleArea(int[] heights) {
+        int maxArea = 0;
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = 0; i <= heights.length; i++) {
+            int currentHeight = (i == heights.length) ? 0 : heights[i];
+
+            while (!stack.isEmpty() && currentHeight < heights[stack.peek()]) {
+                int h = heights[stack.pop()];
+                int w = stack.isEmpty() ? i : i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, h * w);
+            }
+
+            stack.push(i);
+        }
+
+        return maxArea;
     }
 }
