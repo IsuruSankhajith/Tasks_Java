@@ -1,19 +1,32 @@
-public class Tasks2 {
-    public static void main(String[] args) {
-        // Declare and initialize an array of integers
-        int[] numbers = {1, 2, 3, 4, 5};
-
-        // Access elements of the array and print them
-        System.out.println("Elements of the array:");
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.println("Element at index " + i + ": " + numbers[i]);
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        if (n <= 1) {
+            return 0;
         }
 
-        // Calculate the sum of elements in the array
-        int sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
+        int[] leftProfit = new int[n];
+        int[] rightProfit = new int[n];
+
+        // Calculate maximum profit if selling on or before the current day
+        int minPrice = prices[0];
+        for (int i = 1; i < n; i++) {
+            minPrice = Math.min(minPrice, prices[i]);
+            leftProfit[i] = Math.max(leftProfit[i - 1], prices[i] - minPrice);
         }
-        System.out.println("Sum of elements: " + sum);
+
+        // Calculate maximum profit if buying on or after the current day
+        int maxPrice = prices[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            maxPrice = Math.max(maxPrice, prices[i]);
+            rightProfit[i] = Math.max(rightProfit[i + 1], maxPrice - prices[i]);
+        }
+
+        int maxProfit = 0;
+        for (int i = 0; i < n; i++) {
+            maxProfit = Math.max(maxProfit, leftProfit[i] + rightProfit[i]);
+        }
+
+        return maxProfit;
     }
 }
