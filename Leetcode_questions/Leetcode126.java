@@ -45,8 +45,10 @@ class Solution {
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         List<List<String>> result = new ArrayList<>();
         Set<String> wordSet = new HashSet<>(wordList);
+        
+        // Check if endWord is in the wordList
         if (!wordSet.contains(endWord)) {
-            return result; // endWord is not in the wordList, no valid transformation sequence
+            return result; // endWord is not in wordList, no valid transformation sequence
         }
 
         Map<String, List<String>> graph = new HashMap<>();
@@ -59,6 +61,7 @@ class Solution {
         return result;
     }
 
+    // Breadth-First Search to build the graph and calculate distances
     private void bfs(String beginWord, String endWord, Set<String> wordSet, Map<String, List<String>> graph, Map<String, Integer> distance) {
         Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
@@ -98,6 +101,7 @@ class Solution {
         }
     }
 
+    // Get neighbors of a word by changing one letter at a time
     private List<String> getNeighbors(String word, Set<String> wordSet) {
         List<String> neighbors = new ArrayList<>();
         char[] chars = word.toCharArray();
@@ -119,6 +123,7 @@ class Solution {
         return neighbors;
     }
 
+    // Depth-First Search to find all shortest transformation sequences
     private void dfs(String currentWord, String endWord, Map<String, List<String>> graph, Map<String, Integer> distance, List<String> path, List<List<String>> result) {
         if (currentWord.equals(endWord)) {
             result.add(new ArrayList<>(path));
