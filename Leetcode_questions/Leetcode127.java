@@ -44,39 +44,48 @@ import java.util.Set;
 
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        // Create a set for efficient word lookup
         Set<String> wordSet = new HashSet<>(wordList);
 
+        // Check if endWord is in the wordList; if not, transformation sequence is not possible
         if (!wordSet.contains(endWord)) {
-            return 0; // endWord is not in wordList, so transformation sequence is not possible
+            return 0;
         }
 
+        // Use a queue for BFS and initialize level to 1
         Queue<String> queue = new LinkedList<>();
         queue.offer(beginWord);
         int level = 1;
 
+        // BFS loop
         while (!queue.isEmpty()) {
             int size = queue.size();
 
+            // Explore all words at the current level
             for (int i = 0; i < size; i++) {
                 String currentWord = queue.poll();
 
                 char[] wordChars = currentWord.toCharArray();
 
+                // Try changing each character of the word
                 for (int j = 0; j < wordChars.length; j++) {
                     char originalChar = wordChars[j];
 
+                    // Try all possible characters from 'a' to 'z'
                     for (char c = 'a'; c <= 'z'; c++) {
                         if (c == originalChar) {
-                            continue;
+                            continue; // Skip the same character
                         }
 
                         wordChars[j] = c;
                         String transformedWord = new String(wordChars);
 
+                        // If transformedWord is the endWord, return the length of the sequence
                         if (transformedWord.equals(endWord)) {
                             return level + 1; // Transformation sequence found
                         }
 
+                        // If the transformed word is in the wordSet, add it to the queue
                         if (wordSet.contains(transformedWord)) {
                             queue.offer(transformedWord);
                             wordSet.remove(transformedWord); // Mark the word as visited
@@ -87,9 +96,10 @@ class Solution {
                 }
             }
 
-            level++;
+            level++; // Move to the next level
         }
 
         return 0; // No transformation sequence found
     }
 }
+
