@@ -36,34 +36,29 @@ Constraints:
 s consists of lowercase English letters only.
  */
 class Solution {
-    public int candy(int[] ratings) {
-        if (ratings == null || ratings.length == 0) {
-            return 0;
-        }
+    public int minCut(String s) {
+        int n = s.length();
         
-        int n = ratings.length;
-        int[] candies = new int[n];
-        Arrays.fill(candies, 1); // Initialize candies for each child
+        // Initialize a boolean table to check if a substring is a palindrome
+        boolean[][] isPalindrome = new boolean[n][n];
         
-        // Iterate left to right
-        for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i - 1]) {
-                candies[i] = candies[i - 1] + 1;
+        // Initialize an array to store the minimum cuts for each substring
+        int[] minCuts = new int[n];
+        
+        // Calculate palindrome information
+        for (int end = 0; end < n; end++) {
+            minCuts[end] = end; // Maximum cuts needed for a substring of length end
+            
+            for (int start = 0; start <= end; start++) {
+                if (s.charAt(start) == s.charAt(end) && (end - start <= 1 || isPalindrome[start + 1][end - 1])) {
+                    isPalindrome[start][end] = true;
+                    
+                    // Update minimum cuts
+                    minCuts[end] = (start == 0) ? 0 : Math.min(minCuts[end], minCuts[start - 1] + 1);
+                }
             }
         }
         
-        // Iterate right to left
-        for (int i = n - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1]) {
-                candies[i] = Math.max(candies[i], candies[i + 1] + 1);
-            }
-        }
-        
-        int sum = 0;
-        for (int candy : candies) {
-            sum += candy;
-        }
-        
-        return sum;
+        return minCuts[n - 1];
     }
 }
