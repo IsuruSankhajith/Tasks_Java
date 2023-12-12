@@ -35,35 +35,38 @@ s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.
 Input is generated in a way that the length of the answer doesn't exceed 105.
  */
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 class Solution {
-    public int candy(int[] ratings) {
-        if (ratings == null || ratings.length == 0) {
-            return 0;
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        Map<Integer, List<String>> memo = new HashMap<>();
+        return wordBreakHelper(s, 0, wordDict, memo);
+    }
+
+    private List<String> wordBreakHelper(String s, int start, List<String> wordDict, Map<Integer, List<String>> memo) {
+        if (memo.containsKey(start)) {
+            return memo.get(start);
         }
-        
-        int n = ratings.length;
-        int[] candies = new int[n];
-        Arrays.fill(candies, 1); // Initialize candies for each child
-        
-        // Iterate left to right
-        for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i - 1]) {
-                candies[i] = candies[i - 1] + 1;
+
+        List<String> result = new ArrayList<>();
+        if (start == s.length()) {
+            result.add("");
+        }
+
+        for (int end = start + 1; end <= s.length(); end++) {
+            String word = s.substring(start, end);
+            if (wordDict.contains(word)) {
+                List<String> nextWords = wordBreakHelper(s, end, wordDict, memo);
+                for (String nextWord : nextWords) {
+                    result.add(word + (nextWord.isEmpty() ? "" : " " + nextWord));
+                }
             }
         }
-        
-        // Iterate right to left
-        for (int i = n - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1]) {
-                candies[i] = Math.max(candies[i], candies[i + 1] + 1);
-            }
-        }
-        
-        int sum = 0;
-        for (int candy : candies) {
-            sum += candy;
-        }
-        
-        return sum;
+
+        memo.put(start, result);
+        return result;
     }
 }
