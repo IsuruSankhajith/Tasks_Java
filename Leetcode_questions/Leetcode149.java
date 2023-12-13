@@ -28,48 +28,47 @@ points[i].length == 2
 -104 <= xi, yi <= 104
 All the points are unique.
  */
-from collections import defaultdict
-
-def maxPoints(points):
-    if len(points) <= 1:
-        return len(points)
-
-    def gcd(a, b):
-        while b:
-            a, b = b, a % b
-        return a
-
-    def slope(point1, point2):
-        if point1[0] == point2[0]:
-            return float('inf')  # Vertical line
-        dx = point2[0] - point1[0]
-        dy = point2[1] - point1[1]
-        common_factor = gcd(dx, dy)
-        return (dx // common_factor, dy // common_factor)
-
-    max_points = 1
-
-    for i in range(len(points) - 1):
-        slope_count = defaultdict(int)
-        same_point_count = 0
-        local_max = 1
-
-        for j in range(i + 1, len(points)):
-            if points[i] == points[j]:
-                same_point_count += 1
-            else:
-                s = slope(points[i], points[j])
-                slope_count[s] += 1
-                local_max = max(local_max, slope_count[s])
-
-        local_max += same_point_count + 1
-        max_points = max(max_points, local_max)
-
-    return max_points
-
-# Example usage:
-points1 = [[1, 1], [2, 2], [3, 3]]
-print(maxPoints(points1))  # Output: 3
-
-points2 = [[1, 1], [3, 2], [5, 3], [4, 1], [2, 3], [1, 4]]
-print(maxPoints(points2))  # Output: 4
+class Solution {
+    public int maxPoints(int[][] points) {
+        if (points.length <= 2) {
+            return points.length;
+        }
+        
+        int maxPoints = 0;
+        
+        for (int i = 0; i < points.length; i++) {
+            Map<String, Integer> slopes = new HashMap<>();
+            int overlappingPoints = 0;
+            int currentMax = 0;
+            
+            for (int j = i + 1; j < points.length; j++) {
+                int x1 = points[i][0];
+                int y1 = points[i][1];
+                int x2 = points[j][0];
+                int y2 = points[j][1];
+                
+                if (x1 == x2 && y1 == y2) {
+                    overlappingPoints++;
+                    continue;
+                }
+                
+                int dx = x2 - x1;
+                int dy = y2 - y1;
+                
+                int gcd = gcd(dx, dy);
+                dx /= gcd;
+                dy /= gcd;
+                
+                String slope = dy + "/" + dx;
+                slopes.put(slope, slopes.getOrDefault(slope, 0) + 1);
+                currentMax = Math.max(currentMax, slopes.get(slope));
+            }
+            maxPoints = Math.max(maxPoints, currentMax + overlappingPoints + 1);
+        }
+        return maxPoints;
+    }
+    
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+}
