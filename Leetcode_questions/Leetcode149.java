@@ -72,3 +72,81 @@ class Solution {
         return b == 0 ? a : gcd(b, a % b);
     }
 }
+
+/////////////
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Point {
+    int x;
+    int y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public boolean isEqual(Point other) {
+        return this.x == other.x && this.y == other.y;
+    }
+
+    public String calculateSlope(Point other) {
+        int dx = other.x - this.x;
+        int dy = other.y - this.y;
+
+        if (dx == 0) {
+            return "inf";
+        }
+
+        int gcd = gcd(dx, dy);
+        dx /= gcd;
+        dy /= gcd;
+
+        return dy + "/" + dx;
+    }
+
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+}
+
+public class Solution {
+    public int maxPoints(Point[] points) {
+        if (points.length <= 2) {
+            return points.length;
+        }
+
+        int maxPoints = 0;
+
+        for (int i = 0; i < points.length; i++) {
+            Map<String, Integer> slopes = new HashMap<>();
+            int overlappingPoints = 0;
+            int currentMax = 0;
+
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i].isEqual(points[j])) {
+                    overlappingPoints++;
+                    continue;
+                }
+
+                String slope = points[i].calculateSlope(points[j]);
+                slopes.put(slope, slopes.getOrDefault(slope, 0) + 1);
+                currentMax = Math.max(currentMax, slopes.get(slope));
+            }
+            maxPoints = Math.max(maxPoints, currentMax + overlappingPoints + 1);
+        }
+        return maxPoints;
+    }
+
+    public static void main(String[] args) {
+        Point[] points1 = {new Point(1, 1), new Point(2, 2), new Point(3, 3)};
+        Point[] points2 = {new Point(1, 1), new Point(3, 2), new Point(5, 3),
+                           new Point(4, 1), new Point(2, 3), new Point(1, 4)};
+
+        Solution solution = new Solution();
+
+        System.out.println(solution.maxPoints(points1)); // Output: 3
+        System.out.println(solution.maxPoints(points2)); // Output: 4
+    }
+}
