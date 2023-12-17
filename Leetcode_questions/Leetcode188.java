@@ -62,3 +62,56 @@ class Solution {
         return dp[k][n - 1];
     }
 }
+////////////////
+
+class StockTrader {
+    public int maxProfit(int k, int[] prices) {
+        int n = prices.length;
+
+        // If k is too large, it means you can make unlimited transactions.
+        // In this case, you can use the approach of buying and selling whenever there's a profit.
+        if (k >= n / 2) {
+            return maxProfitUnlimited(prices);
+        }
+
+        // If k is not too large, use dynamic programming to find the maximum profit.
+        int[][] dp = new int[k + 1][n];
+
+        for (int i = 1; i <= k; i++) {
+            int maxDiff = -prices[0];
+
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = Math.max(dp[i][j - 1], prices[j] + maxDiff);
+                maxDiff = Math.max(maxDiff, dp[i - 1][j] - prices[j]);
+            }
+        }
+
+        return dp[k][n - 1];
+    }
+
+    private int maxProfitUnlimited(int[] prices) {
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                maxProfit += prices[i] - prices[i - 1];
+            }
+        }
+        return maxProfit;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        StockTrader stockTrader = new StockTrader();
+
+        // Example 1
+        int k1 = 2;
+        int[] prices1 = {2, 4, 1};
+        System.out.println(stockTrader.maxProfit(k1, prices1)); // Output: 2
+
+        // Example 2
+        int k2 = 2;
+        int[] prices2 = {3, 2, 6, 5, 0, 3};
+        System.out.println(stockTrader.maxProfit(k2, prices2)); // Output: 7
+    }
+}
