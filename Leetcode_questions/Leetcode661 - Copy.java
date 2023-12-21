@@ -41,28 +41,40 @@ Constraints:
 1 <= heighti <= 231 - 1
 buildings is sorted by lefti in non-decreasing order.
  */
-class Solution {
-    public List<List<Integer>> getSkyline(int[][] buildings) {
+import java.util.*;
+
+class Building {
+    int left, right, height;
+
+    public Building(int left, int right, int height) {
+        this.left = left;
+        this.right = right;
+        this.height = height;
+    }
+}
+
+class CriticalPoint {
+    int x, height;
+
+    public CriticalPoint(int x, int height) {
+        this.x = x;
+        this.height = height;
+    }
+}
+
+class Skyline {
+    public List<List<Integer>> getSkyline(List<Building> buildings) {
         List<List<Integer>> result = new ArrayList<>();
-        List<int[]> criticalPoints = new ArrayList<>();
+        List<CriticalPoint> criticalPoints = new ArrayList<>();
 
         // Step 1: Identify critical points
-        for (int[] building : buildings) {
-            int left = building[0];
-            int right = building[1];
-            int height = building[2];
-            criticalPoints.add(new int[]{left, -height}); // Mark left edge with negative height
-            criticalPoints.add(new int[]{right, height}); // Mark right edge with positive height
+        for (Building building : buildings) {
+            criticalPoints.add(new CriticalPoint(building.left, -building.height));
+            criticalPoints.add(new CriticalPoint(building.right, building.height));
         }
 
         // Sort critical points based on x-coordinate and height
-        Collections.sort(criticalPoints, (a, b) -> {
-            if (a[0] != b[0]) {
-                return a[0] - b[0];
-            } else {
-                return a[1] - b[1];
-            }
-        });
+        Collections.sort(criticalPoints, Comparator.comparingInt((CriticalPoint cp) -> cp.x).thenComparingInt(cp -> cp.height));
 
         // Step 2: Process critical points
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
@@ -70,11 +82,11 @@ class Solution {
         int prevMaxHeight = 0;
 
         // Step 3: Generate resultant skyline
-        for (int[] point : criticalPoints) {
-            int x = point[0];
-            int height = Math.abs(point[1]);
+        for (CriticalPoint point : criticalPoints) {
+            int x = point.x;
+            int height = Math.abs(point.height);
 
-            if (point[1] < 0) { // Left edge
+            if (point.height < 0) { // Left edge
                 maxHeap.offer(height);
             } else { // Right edge
                 maxHeap.remove(height);
@@ -91,3 +103,18 @@ class Solution {
     }
 }
 
+public class Solution {
+    public static void main(String[] args) {
+        Skyline skylineSolver = new Skyline();
+        List<Building> buildings = Arrays.asList(
+            new Building(2, 9, 10),
+            new Building(3, 7, 15),
+            new Building(5, 12, 12),
+            new Building(15, 20, 10),
+            new Building(19, 24, 8)
+        );
+
+        List<List<Integer>> result = skylineSolver.getSkyline(buildings);
+        System.out.println(result);
+    }
+}
