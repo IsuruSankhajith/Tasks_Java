@@ -32,32 +32,41 @@ Constraints:
 1 <= k <= nums.length
 
  */
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 class Solution {
-    public int[][] imageSmoother(int[][] img) {
-        int m = img.length;
-        int n = img[0].length;
-        int[][] result = new int[m][n];
-        
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                result[i][j] = getSmoothedValue(img, i, j, m, n);
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return new int[0];
+        }
+
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        int ri = 0;
+
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            // Remove elements outside of the current window
+            while (!deque.isEmpty() && deque.peek() < i - k + 1) {
+                deque.poll();
+            }
+
+            // Remove smaller elements as they won't affect the result
+            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
+                deque.pollLast();
+            }
+
+            // Add the current element to the deque
+            deque.offer(i);
+
+            // Add the maximum element to the result array for the current window
+            if (i >= k - 1) {
+                result[ri++] = nums[deque.peek()];
             }
         }
-        
+
         return result;
-    }
-    
-    private int getSmoothedValue(int[][] img, int i, int j, int m, int n) {
-        int sum = 0;
-        int count = 0;
-        
-        for (int x = Math.max(0, i - 1); x <= Math.min(m - 1, i + 1); x++) {
-            for (int y = Math.max(0, j - 1); y <= Math.min(n - 1, j + 1); y++) {
-                sum += img[x][y];
-                count++;
-            }
-        }
-        
-        return sum / count;
     }
 }
