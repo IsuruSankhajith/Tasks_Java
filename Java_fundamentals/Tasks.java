@@ -1995,9 +1995,168 @@ class Solution {
     }
 }
 
+///////////////////////////////
+
+// Testing - Task C
+//i
+
+public class Tasks2 {
+
+    public static void main(String[] args) {
+        // Example inputs
+        int employeeID = 112245;
+        char employmentType = 'P'; // C, P, or F
+        double hoursWorked = 10.0; // Hours worked during the week
+        double hourlyRate = 60.0; // Hourly rate
+
+        // Validate inputs
+        if (isValidInput(employeeID, employmentType, hoursWorked, hourlyRate)) {
+            // Calculate weekly wages
+            double weeklyWages = calculateWeeklyWages(hoursWorked, hourlyRate);
+
+            // Display output
+            displayOutput(employeeID, employmentType, hoursWorked, hourlyRate, weeklyWages);
+        } else {
+            System.out.println("Invalid input. Please check the input parameters.");
+        }
+    }
+
+    // Function to validate input parameters
+    private static boolean isValidInput(int employeeID, char employmentType, double hoursWorked, double hourlyRate) {
+        // Additional validation can be added as needed
+        return (hoursWorked >= 5 && hoursWorked <= 70) && (hourlyRate >= 25.0 && hourlyRate <= 75.0);
+    }
+
+    // Function to calculate weekly wages
+    private static double calculateWeeklyWages(double hoursWorked, double hourlyRate) {
+        return hoursWorked * hourlyRate;
+    }
+
+    // Function to display output
+    private static void displayOutput(int employeeID, char employmentType, double hoursWorked, double hourlyRate, double weeklyWages) {
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Employment Type: " + employmentType);
+        System.out.println("Number of Hours Worked: " + hoursWorked + " hours");
+        System.out.println("Hourly Rate: $" + hourlyRate);
+        System.out.println("Weekly Wages: $" + weeklyWages);
+    }
+}
+////////////
+
+//ii
+
+Equivalence Partitioning (EP) and Boundary Value Analysis (BVA) are testing techniques used to design effective test cases by dividing the input domain into classes. Let's outline the equivalence classes and provide relevant test cases for the given program.
+
+### Equivalence Classes:
+
+1. **Employee ID:**
+   - Valid range: 1000 to 9999
+   - Invalid: Below 1000 or above 9999
+
+2. **Employment Type:**
+   - Valid values: 'C', 'P', 'F'
+   - Invalid values: Any other character
+
+3. **Hours Worked:**
+   - Valid range: 5 to 70
+   - Invalid: Below 5 or above 70
+
+4. **Hourly Rate:**
+   - Valid range: $25.00 to $75.00
+   - Invalid: Below $25.00 or above $75.00
+
+### Test Cases:
+
+Let's use Equivalence Partitioning to select representative values from each class and Boundary Value Analysis to test the boundaries.
+
+1. **Valid Test Cases:**
+   - EQ Class 1 (Employee ID): 2500
+   - EQ Class 2 (Employment Type): 'P'
+   - EQ Class 3 (Hours Worked): 35.0
+   - EQ Class 4 (Hourly Rate): $50.00
+
+2. **Invalid Test Cases:**
+   - EQ Class 1 (Employee ID): 500 (Below minimum)
+   - EQ Class 1 (Employee ID): 12000 (Above maximum)
+   - EQ Class 2 (Employment Type): 'X' (Invalid character)
+   - EQ Class 3 (Hours Worked): 2.0 (Below minimum)
+   - EQ Class 3 (Hours Worked): 80.0 (Above maximum)
+   - EQ Class 4 (Hourly Rate): $10.00 (Below minimum)
+   - EQ Class 4 (Hourly Rate): $100.00 (Above maximum)
+
+3. **Boundary Test Cases:**
+   - EQ Class 1 (Employee ID):
+     - Boundary: 1000 (Lower bound)
+     - Boundary: 9999 (Upper bound)
+   - EQ Class 2 (Employment Type):
+     - Boundary: 'C' (Lower bound)
+     - Boundary: 'F' (Upper bound)
+   - EQ Class 3 (Hours Worked):
+     - Boundary: 5.0 (Lower bound)
+     - Boundary: 70.0 (Upper bound)
+   - EQ Class 4 (Hourly Rate):
+     - Boundary: $25.00 (Lower bound)
+     - Boundary: $75.00 (Upper bound)
+
+### Test Case Specification Sheet (Partial):
+
+| Test Case ID | Employee ID | Employment Type | Hours Worked | Hourly Rate | Expected Output |
+|--------------|-------------|------------------|--------------|-------------|-----------------|
+| 1            | 2500        | 'P'              | 35.0         | $50.00      | Valid Output    |
+| 2            | 500         | 'X'              | 2.0          | $10.00      | Invalid Output  |
+| 3            | 12000       | 'F'              | 80.0         | $100.00     | Invalid Output  |
+| 4            | 1000        | 'C'              | 5.0          | $25.00      | Valid Output    |
+| ...          | ...         | ...              | ...          | ...         | ...             |
+
+Use this table as a template to record additional test cases. Ensure that you cover all equivalence classes, both valid and invalid cases, and the boundaries of each class.
 
 
+//iii
 
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class PayrollProgramTest {
+
+    @Test
+    public void testValidInput() {
+        assertTrue(PayrollProgram.isValidInput(2500, 'P', 35.0, 50.0));
+    }
+
+    @Test
+    public void testInvalidInput() {
+        assertFalse(PayrollProgram.isValidInput(500, 'X', 2.0, 10.0));
+    }
+
+    @Test
+    public void testCalculateWeeklyWages() {
+        double result = PayrollProgram.calculateWeeklyWages(35.0, 50.0);
+        assertEquals(1750.0, result, 0.001);
+    }
+
+    @Test
+    public void testDisplayOutput() {
+        // You can redirect System.out to capture the output and then assert it.
+        // For simplicity, let's assume the output is a string.
+        String expectedOutput = "Employee ID: 2500\nEmployment Type: P\nNumber of Hours Worked: 35.0 hours\nHourly Rate: $50.0\nWeekly Wages: $1750.0\n";
+        assertEquals(expectedOutput, getDisplayOutput(2500, 'P', 35.0, 50.0, 1750.0));
+    }
+
+    // Helper method to capture System.out
+    private String getDisplayOutput(int employeeID, char employmentType, double hoursWorked, double hourlyRate, double weeklyWages) {
+        // Redirect System.out to capture the output
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        // Call the method that prints to System.out
+        PayrollProgram.displayOutput(employeeID, employmentType, hoursWorked, hourlyRate, weeklyWages);
+
+        // Reset System.out
+        System.setOut(originalOut);
+
+        return outContent.toString();
+    }
+}
 
 
 
