@@ -29,32 +29,93 @@ board[i][j] is a lowercase English letter.
 words[i] consists of lowercase English letters.
 All the strings of words are unique.
  */
-class Solution {
-    public int[][] imageSmoother(int[][] img) {
-        int m = img.length;
-        int n = img[0].length;
-        int[][] result = new int[m][n];
-        
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                result[i][j] = getSmoothedValue(img, i, j, m, n);
+import java.util.ArrayList;
+import java.util.List;
+
+class TrieNode {
+    TrieNode[] children;
+    String word;
+
+    public TrieNode() {
+        children = new TrieNode[26];
+        word = null;
+    }
+}
+
+public class Solution {
+    public List<String> findWords(char[][] board, String[] words) {
+        List<String> result = new ArrayList<>();
+        TrieNode root = buildTrie(words);
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                dfs(board, i, j, root, result);
             }
         }
-        
+
         return result;
     }
-    
-    private int getSmoothedValue(int[][] img, int i, int j, int m, int n) {
-        int sum = 0;
-        int count = 0;
-        
-        for (int x = Math.max(0, i - 1); x <= Math.min(m - 1, i + 1); x++) {
-            for (int y = Math.max(0, j - 1); y <= Math.min(n - 1, j + 1); y++) {
-                sum += img[x][y];
-                count++;
+
+    private TrieNode buildTrie(String[] words) {
+        TrieNode root = new TrieNode();
+
+        for (String word : words) {
+            TrieNode node = root;
+            for (char ch : word.toCharArray()) {
+                int index = ch - 'a';
+                if (node.children[index] == null) {
+                    node.children[index] = new TrieNode();
+                }
+                node = node.children[index];
+            }
+            node.word = word;
+        }
+
+        return root;
+    }
+
+    private void dfs(char[][] board, int i, int j, TrieNode node, List<String> result) {
+        char ch = board[i][j];
+        if (ch == '#' || node.children[ch - 'a'] == null) {
+            return;
+        }
+
+        node = node.children[ch - 'a'];
+        if (node.word != null) {
+            result.add(node.word);
+            node.word = null; // Mark the word as found to avoid duplicates
+        }
+
+        board[i][j] = '#'; // Mark the cell as visited
+
+        int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for (int[] dir : directions) {
+            int newRow = i + dir[0];
+            int newCol = j + dir[1];
+            if (newRow >= 0 && newRow < board.length && newCol >= 0 && newCol < board[0].length) {
+                dfs(board, newRow, newCol, node, result);
             }
         }
-        
-        return sum / count;
+
+        board[i][j] = ch; // Restore the original value of the cell
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        char[][] board1 = {
+                {'o', 'a', 'a', 'n'},
+                {'e', 't', 'a', 'e'},
+                {'i', 'h', 'k', 'r'},
+                {'i', 'f', 'l', 'v'}
+        };
+        String[] words1 = {"oath", "pea", "eat", "rain"};
+        System.out.println(solution.findWords(board1, words1)); // Output: [eat, oath]
+
+        char[][] board2 = {
+                {'a', 'b'},
+                {'c', 'd'}
+        };
+        String[] words2 = {"abcb"};
+        System.out.println(solution.findWords(board2, words2)); // Output: []
     }
 }
