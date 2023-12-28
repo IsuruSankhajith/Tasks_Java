@@ -70,3 +70,69 @@ class Solution {
         return result;
     }
 }
+///////////////
+
+import java.util.Stack;
+
+class Calculator {
+    private Stack<Integer> stack;
+    private int num;
+    private int result;
+    private int sign;
+
+    public Calculator() {
+        this.stack = new Stack<>();
+        this.num = 0;
+        this.result = 0;
+        this.sign = 1;
+    }
+
+    public int calculate(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            processCharacter(c);
+        }
+
+        result += sign * num;
+        return result;
+    }
+
+    private void processCharacter(char c) {
+        if (Character.isDigit(c)) {
+            num = num * 10 + (c - '0');
+        } else if (c == '+') {
+            result += sign * num;
+            num = 0;
+            sign = 1;
+        } else if (c == '-') {
+            result += sign * num;
+            num = 0;
+            sign = -1;
+        } else if (c == '(') {
+            stack.push(result);
+            stack.push(sign);
+            result = 0;
+            sign = 1;
+        } else if (c == ')') {
+            result += sign * num;
+            num = 0;
+            result *= stack.pop(); // pop sign
+            result += stack.pop(); // pop result
+        }
+    }
+}
+
+public class Solution {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
+        // Example 1
+        System.out.println(calculator.calculate("1 + 1")); // Output: 2
+
+        // Example 2
+        System.out.println(calculator.calculate(" 2-1 + 2 ")); // Output: 3
+
+        // Example 3
+        System.out.println(calculator.calculate("(1+(4+5+2)-3)+(6+8)")); // Output: 23
+    }
+}
