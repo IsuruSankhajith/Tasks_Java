@@ -75,3 +75,80 @@ public class Codec {
         return node;
     }
 }
+////////////////\\
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    
+    public TreeNode(int x) {
+        val = x;
+    }
+}
+
+public class TreeSerializer {
+
+    // Encodes a tree to a single string using preorder traversal.
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        serializeHelper(root, sb);
+        return sb.toString();
+    }
+    
+    private void serializeHelper(TreeNode node, StringBuilder sb) {
+        if (node == null) {
+            sb.append("null").append(",");
+            return;
+        }
+        sb.append(node.val).append(",");
+        serializeHelper(node.left, sb);
+        serializeHelper(node.right, sb);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        Queue<String> nodes = new LinkedList<>(Arrays.asList(data.split(",")));
+        return deserializeHelper(nodes);
+    }
+    
+    private TreeNode deserializeHelper(Queue<String> nodes) {
+        String val = nodes.poll();
+        if (val.equals("null")) {
+            return null;
+        }
+        
+        TreeNode node = new TreeNode(Integer.parseInt(val));
+        node.left = deserializeHelper(nodes);
+        node.right = deserializeHelper(nodes);
+        
+        return node;
+    }
+}
+
+// Example usage:
+public class CodecExample {
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(5);
+
+        TreeSerializer treeSerializer = new TreeSerializer();
+        
+        // Serialize the tree
+        String serialized = treeSerializer.serialize(root);
+        System.out.println("Serialized Tree: " + serialized);
+
+        // Deserialize the tree
+        TreeNode deserializedRoot = treeSerializer.deserialize(serialized);
+
+        // Use the deserialized tree as needed
+    }
+}
