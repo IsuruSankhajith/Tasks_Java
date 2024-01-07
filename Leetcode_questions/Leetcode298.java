@@ -59,32 +59,52 @@ If 99% of all integer numbers from the stream are in the range [0, 100], how wou
  * obj.addNum(num);
  * double param_2 = obj.findMedian();
  */ */
-class Solution {
-    public int[][] imageSmoother(int[][] img) {
-        int m = img.length;
-        int n = img[0].length;
-        int[][] result = new int[m][n];
-        
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                result[i][j] = getSmoothedValue(img, i, j, m, n);
-            }
-        }
-        
-        return result;
+import java.util.PriorityQueue;
+
+class MedianFinder {
+
+    private PriorityQueue<Integer> maxHeap; // Stores the smaller half of the numbers
+    private PriorityQueue<Integer> minHeap; // Stores the larger half of the numbers
+
+    public MedianFinder() {
+        maxHeap = new PriorityQueue<>((a, b) -> b - a);
+        minHeap = new PriorityQueue<>();
     }
-    
-    private int getSmoothedValue(int[][] img, int i, int j, int m, int n) {
-        int sum = 0;
-        int count = 0;
-        
-        for (int x = Math.max(0, i - 1); x <= Math.min(m - 1, i + 1); x++) {
-            for (int y = Math.max(0, j - 1); y <= Math.min(n - 1, j + 1); y++) {
-                sum += img[x][y];
-                count++;
-            }
+
+    public void addNum(int num) {
+        // Add the number to the appropriate heap
+        if (maxHeap.isEmpty() || num <= maxHeap.peek()) {
+            maxHeap.offer(num);
+        } else {
+            minHeap.offer(num);
         }
-        
-        return sum / count;
+
+        // Balance the heaps to ensure their sizes differ by at most 1
+        if (maxHeap.size() > minHeap.size() + 1) {
+            minHeap.offer(maxHeap.poll());
+        } else if (minHeap.size() > maxHeap.size()) {
+            maxHeap.offer(minHeap.poll());
+        }
+    }
+
+    public double findMedian() {
+        // If the heaps have the same size, take the average of their tops
+        if (maxHeap.size() == minHeap.size()) {
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        } else {
+            // Otherwise, the max heap contains the middle element
+            return maxHeap.peek();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MedianFinder medianFinder = new MedianFinder();
+        medianFinder.addNum(1);
+        medianFinder.addNum(2);
+        System.out.println(medianFinder.findMedian()); // Output: 1.5
+        medianFinder.addNum(3);
+        System.out.println(medianFinder.findMedian()); // Output: 2.0
     }
 }
